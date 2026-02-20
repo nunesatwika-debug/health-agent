@@ -2,7 +2,7 @@
 
 A full-stack web application that provides personalized health recommendations using intelligent text compression and symptom-based analysis. Achieves up to **75% token savings** through smart truncation while delivering actionable medical advice.
 
-## ✨ Features
+✨ Features
 
 - **75% Token Compression** - Smart medical text optimization
 - **Symptom Detection** - Hypertension, diabetes, sleep issues, sedentary lifestyle
@@ -11,14 +11,13 @@ A full-stack web application that provides personalized health recommendations u
 - **SQLite Database** - Persistent user data storage
 - **Production-Ready** - Flask backend + static HTML frontend
 
-## 🏗️ Tech Stack
+🏗️ Tech Stack
 
-```
 Backend: Flask (Python 3.14) + SQLite
 Frontend: Vanilla HTML/CSS/JavaScript (No frameworks)
 Compression: ScaleDown package + Smart truncation fallback
 Deployment-ready: Gunicorn + requirements.txt
-```
+
 
 ## 🚀 Quick Start (Local)
 
@@ -83,7 +82,7 @@ Recommendations:
 
 ## 🛠️ File Structure
 
-```
+
 health-agent/
 ├── backend/
 │   ├── app.py           # Flask API + compression logic
@@ -93,7 +92,7 @@ health-agent/
 │   └── health.html      # Glassmorphism UI
 ├── .env                # Secrets (.gitignore)
 └── README.md
-```
+
 
 ## ⚙️ Development
 
@@ -120,7 +119,7 @@ Double-click frontend/health.html
 User ID: hypertension1
 History: Patient Rajesh Kumar age 47 diagnosed with stage 2 hypertension March 2023 during routine annual health checkup at Apollo Hospital Hyderabad, strong family history of cardiovascular disease including father who suffered myocardial infarction age 52 mother controlled hypertension on medication since age 45, personal medical history includes regular home blood pressure monitoring using Omron digital device average daytime readings 152 systolic over 94 diastolic nighttime readings 148 over 90, experiencing occasional morning headaches frontal region occasional dizziness upon standing from sitting position, currently prescribed tablet Lisinopril 20mg once daily morning and tablet Atorvastatin 40mg once daily evening for cholesterol management with recent lipid profile showing total cholesterol 238mg/dL LDL 154mg/dL HDL 41mg/dL triglycerides 202mg/dL all above optimal therapeutic targets
 Wellness: Software engineer at multinational IT corporation Hyderabad working corporate office environment 11 hours continuous daily computer screen exposure completely sedentary lifestyle zero structured aerobic exercise weekend entertainment primarily Netflix streaming binge-watching series and mobile video gaming PUBG Free Fire, irregular sleep-wake cycle averaging 5.2 hours weekdays 8-9 hours weekends creating circadian rhythm disruption, caffeine consumption excessive 4 large coffees 400ml each daily plus weekend energy drinks Red Bull Monster, hydration status poor approximately 1.2 liters water daily mostly carbonated soft drinks Pepsi Coke, continuous desk snacking potato chips namkeen mixture biscuits cookies throughout workday, extremely high work stress levels due to aggressive project deadlines client presentations quarterly performance reviews self-reported stress scale 9 out of 10 maximum, occasional palpitations during high-pressure conference calls
-```
+
 **Expected:** 65-80% compression + BP monitoring + salt reduction + 10k steps
 
 ***
