@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🩺 Health Monitoring Agent</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: rgba(255,255,255,0.1); 
+            backdrop-filter: blur(20px); 
+            border-radius: 25px; 
+            padding: 40px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 { 
+            text-align: center; 
+            color: white; 
+            font-size: 2.5em; 
+            margin-bottom: 10px; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .subtitle { text-align: center; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
+        
+        .input-group { margin-bottom: 25px; }
+        label { 
+            display: block; 
+            color: white; 
+            font-weight: 600; 
+            margin-bottom: 8px; 
+            font-size: 1.1em;
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 15px; 
+            background: rgba(255,255,255,0.9); 
+            font-size: 16px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        input:focus, textarea:focus { 
+            outline: none; 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: white;
+        }
+        textarea { height: 120px; resize: vertical; }
+        
+        .btn { 
+            width: 100%; 
+            padding: 20px; 
+            background: linear-gradient(45deg, #28a745, #20c997); 
+            color: white; 
+            border: none; 
+            border-radius: 15px; 
+            font-size: 1.3em; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(40,167,69,0.6); }
+        .btn:active { transform: translateY(-1px); }
+        
+        #results { margin-top: 30px; min-height: 100px; }
+        .loading { text-align: center; color: white; font-size: 1.2em; }
+        .success { animation: fadeIn 0.5s ease; }
+        .rec-item { 
+            background: rgba(255,255,255,0.95); 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #28a745;
+        }
+        .savings-metric { 
+            text-align: center; 
+            background: linear-gradient(45deg, #ff6b6b, #feca57); 
+            color: white; 
+            padding: 25px; 
+            border-radius: 15px; 
+            font-size: 1.8em; 
+            font-weight: bold; 
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+        details { 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-top: 20px;
+        }
+        summary { cursor: pointer; color: white; font-weight: 600; }
+        pre { background: rgba(0,0,0,0.2); color: #e9ecef; padding: 15px; border-radius: 10px; overflow-x: auto; }
+        
+        .error { background: rgba(255,107,107,0.2); color: #ff6b6b; padding: 20px; border-radius: 15px; border-left: 5px solid #dc3545; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .container { margin: 10px; padding: 20px; } h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Health Monitoring Agent</h1>
+        <p class="subtitle">AI-Powered Wellness Recommendations with ScaleDown Compression</p>
+        
+        <!-- ✅ EMPTY FIELDS - NO PRE-FILLED DATA -->
+        <div class="input-group">
+            <label>👤 User ID</label>
+            <input id="userId" placeholder="Enter new User ID (e.g. fresh1)">
+        </div>
+        
+        <div class="input-group">
+            <label>📋 Medical History</label>
+            <textarea id="history" placeholder="e.g. Hypertension diagnosis 2 years ago, family diabetes history..."></textarea>
+        </div>
+        
+        <div class="input-group">
+            <label>💊 Current Wellness</label>
+            <textarea id="wellness" placeholder="e.g. Sedentary job 10hrs/day, sleep 5hrs, high stress..."></textarea>
+        </div>
+        
+        <button class="btn" onclick="getRecommendations()">🚀 Analyze & Get Recommendations</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+    async function getRecommendations() {
+        const results = document.getElementById('results');
+        results.innerHTML = '<div class="loading">🔄 Compressing data with ScaleDown AI...</div>';
+        results.className = '';
+        
+        const userId = document.getElementById('userId').value.trim();
+        const history = document.getElementById('history').value.trim();
+        const wellness = document.getElementById('wellness').value.trim();
+        
+        if (!userId || !history || !wellness) {
+            results.innerHTML = '<div class="error">❌ Please fill all three fields</div>';
+            return;
+        }
+        
+        try {
+            // Add data
+            await fetch('http://localhost:5000/add_data', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({user_id: userId, history, wellness})
+            });
+            
+            // Get recommendations
+            const response = await fetch(`http://localhost:5000/get_recommendations/${userId}`);
+            const data = await response.json();
+            
+            if (data.error) {
+                results.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+                return;
+            }
+            
+            results.className = 'success';
+            results.innerHTML = `
+                <h3 style="color: #28a745; margin-bottom: 20px;">✅ Personalized Health Recommendations</h3>
+                ${data.recommendations.map(rec => `<div class="rec-item">${rec}</div>`).join('')}
+                <div class="savings-metric">💰 Token Savings: ${data.savings_percent || 0}%</div>
+                <details>
+                    <summary>📊 View Compressed Data (${data.compressed_data?.length || 0} chars)</summary>
+                    <pre>${data.compressed_data || 'No compression data'}</pre>
+                </details>
+                <p style="text-align: center; color: rgba(255,255,255,0.8); margin-top: 20px;">
+                    ⚠️ Not medical advice - consult healthcare professionals
+                </p>
+            `;
+        } catch (error) {
+            results.innerHTML = `
+                <div class="error">
+                    ❌ Connection Error<br>
+                    <small>Make sure Backend Terminal 1 is running (port 5000)</small>
+                </div>
+            `;
+        }
+    }
+
+    // Enter key support
+    document.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && e.ctrlKey) {
+            getRecommendations();
+        }
+    });
+    </script>
+</body>
+</html>
