@@ -82,7 +82,7 @@ Recommendations:
 
 ## 🛠️ File Structure
 
-
+```
 health-agent/
 ├── backend/
 │   ├── app.py           # Flask API + compression logic
@@ -125,7 +125,6 @@ Wellness: Software engineer at multinational IT corporation Hyderabad working co
 ***
 
 ### **Test Case 2: Type 2 Diabetes + Peripheral Neuropathy + Obesity**
-
 User ID: diabetes1
 History: Mrs Priya Sharma age 52 diagnosed Type 2 diabetes mellitus January 2022 during routine fasting blood sugar screening corporate wellness program HbA1c 8.4% fasting plasma glucose 168mg/dL postprandial 2hr 256mg/dL, strong family history maternal grandfather developed diabetes age 58 paternal aunt required insulin therapy age 62, current pharmacological management includes tablet Metformin 1000mg twice daily before meals tablet Glipizide 5mg once daily breakfast additional tablet Sitagliptin 100mg once daily dinner, experiencing bilateral lower limb peripheral neuropathy symptoms tingling paraesthesia feet intermittent numbness toes worse nighttime requiring Pregabalin 75mg bedtime, annual diabetic retinopathy screening Fundus photography January 2025 shows early non-proliferative changes microaneurysms dot blot hemorrhages, urine albumin creatinine ratio 52mg/g borderline microalbuminuria, serum creatinine 1.02mg/dL eGFR 68ml/min normal range
 Wellness: Night shift Data Entry Operator Reliance Industries Jamnagar 10PM to 7AM schedule severely disrupting natural circadian rhythm irregular meal timing frequent late night fast food consumption McDonalds Burger King Domino's 4-5 times weekly supersized portions, daytime sleep duration severely compromised 4-5 hours interrupted by neighborhood traffic noise barking dogs domestic chores, current anthropometric measurements weight 96kg height 165cm BMI 35.3 obese class II waist circumference 102cm central obesity, recreational activity limited excessive mobile gaming 3+ hours nightly consuming 2 liters carbonated sugary beverages Thums Up Mirinda daily minimal physical exertion walks neighborhood stray dog 8-10 minutes occasional feels breathless climbing 2 flights stairs
@@ -135,7 +134,6 @@ Wellness: Night shift Data Entry Operator Reliance Industries Jamnagar 10PM to 7
 ***
 
 ### **Test Case 3: Chronic Insomnia + Generalized Anxiety Disorder**
-
 User ID: insomnia1
 History: Mr Vikram Singh age 34 chronic primary insomnia diagnosed Sleep Medicine Specialist AIIMS Delhi 20 months ago comprehensive polysomnography PSG March 2024 confirmed severe sleep onset latency SOL 58 minutes total sleep time TST 4 hours 12 minutes sleep efficiency index SE 54% significantly below normal range, prescribed Zolpidem 10mg immediate release as needed maximum 3 nights weekly current usage pattern 5-6 nights weekly developing tolerance, Epworth Sleepiness Scale ESS score 16 severe daytime somnolence high motor vehicle crash risk, comorbid Generalized Anxiety Disorder GAD-7 screening score 15 severe range requiring Sertraline 50mg daily Escitalopram 10mg alternate therapy cognitive behavioral therapy CBTi referral, additional history gastroesophageal reflux GERD requiring Pantoprazole 40mg bedtime
 Wellness: Freelance Digital Marketing Consultant irregular unpredictable client deadlines Delhi NCR region frequently working 1AM to 7AM bursts followed by daytime client meetings presentations, caffeine consumption excessive 600mg equivalent daily 3 double shot espressos 2 energy drinks Red Bull pre-workout supplements gym, blue light exposure extreme smartphone scrolling Instagram Twitter 4+ hours before attempted bedtime bedroom environment includes 55" LED television streaming Netflix Amazon Prime action thriller movies high arousal content, melatonin supplements 5mg extended release occasional subjective effectiveness 45% sleep onset improved 20 minutes, bedroom temperature 28°C excessively warm poor sleep hygiene weekend catch-up sleep 10-12 hours creating sleep inertia Monday morning
